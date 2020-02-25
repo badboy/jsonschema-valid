@@ -1,6 +1,6 @@
 use serde_json::Value;
 
-use crate::error::ValidationError;
+use crate::error::{ErrorIterator, ValidationError};
 use crate::format::FormatChecker;
 use crate::resolver::Resolver;
 use crate::schemas;
@@ -61,5 +61,15 @@ impl<'a> Config<'a> {
                 schemas::draft_from_schema(schema).unwrap_or_else(|| &schemas::Draft7)
             }),
         })
+    }
+
+    /// Validates a given JSON instance against this JSON schema configuration,
+    /// returning the errors, if any.
+    pub fn validate(
+        &'a self,
+        instance: &'a Value,
+        validate_schema: bool,
+    ) -> ErrorIterator<'a> {
+        crate::validate(self, instance, self.schema, validate_schema)
     }
 }

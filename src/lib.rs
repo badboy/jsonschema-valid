@@ -73,7 +73,7 @@ pub use crate::error::{ErrorIterator, ValidationError};
 /// let data: Value = serde_json::from_str(your_json_data)?;
 /// let cfg = jsonschema_valid::Config::from_schema(&schema, Some(&schemas::Draft6)).unwrap();
 ///
-/// let mut validation = jsonschema_valid::validate(&cfg, &data, &schema, false);
+/// let mut validation = cfg.validate(&data, false);
 /// assert!(!validation.next().is_some());
 ///
 /// # Ok(()) }
