@@ -7,6 +7,7 @@ use crate::schemas;
 use crate::validators::Validator;
 
 /// A structure to hold configuration for a single validation run.
+#[derive(Debug)]
 pub struct Config<'a> {
     schema: &'a Value,
     resolver: Resolver<'a>,

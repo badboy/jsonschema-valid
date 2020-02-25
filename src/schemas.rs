@@ -10,7 +10,7 @@ use crate::validators;
 use crate::validators::Validator;
 
 /// The validator can validate JSON data against different versions of JSON Schema.
-pub trait Draft {
+pub trait Draft: std::fmt::Debug {
     /// Get a validator function for the given item.
     fn get_validator(&self, key: &str) -> Option<Validator>;
 
@@ -25,6 +25,7 @@ pub trait Draft {
 }
 
 /// JSONSchema [Draft 7](https://json-schema.org/specification-links.html#draft-7)
+#[derive(Debug)]
 pub struct Draft7;
 
 impl Draft for Draft7 {
@@ -100,6 +101,7 @@ impl Draft for Draft7 {
 }
 
 /// JSONSchema [Draft 6](https://json-schema.org/specification-links.html#draft-6)
+#[derive(Debug)]
 pub struct Draft6;
 
 impl Draft for Draft6 {
@@ -171,6 +173,7 @@ impl Draft for Draft6 {
 }
 
 /// JSONSchema [Draft 4](https://json-schema.org/specification-links.html#draft-4)
+#[derive(Debug)]
 pub struct Draft4;
 
 impl Draft for Draft4 {

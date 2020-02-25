@@ -18,6 +18,7 @@ fn id_of(schema: &Value) -> Option<&str> {
     }
 }
 
+#[derive(Debug)]
 pub struct Resolver<'a> {
     base_url: String,
     id_mapping: HashMap<String, &'a Value>,
